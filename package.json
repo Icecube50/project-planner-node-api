@@ -1,0 +1,27 @@
+{
+  "name": "project-planner-node-api",
+  "version": "1.0.0",
+  "description": "Demo node.js api to provide dummy interactions for project-planner",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Icecube50/project-planner-node-api.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Icecube50/project-planner-node-api/issues"
+  },
+  "homepage": "https://github.com/Icecube50/project-planner-node-api#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

@@ -9,6 +9,21 @@ app.get('/api/tasks', (req, res) => {
   res.json(tasks);
 });
 
+app.post('api/tasks/:task_data', (req, res) => {
+  const newProject = {
+    start: req.params.start,
+    end: req.params.end,
+    name: req.params.name,
+    id: req.params.id,
+    progress: 0
+  }
+  
+  console.log(newProject)
+
+  //tasks.push(newProject)
+  res.status(201).json(tasks)
+})
+
 // Start the server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
@@ -36,7 +51,7 @@ let tasks = [
               start: daysSince(1),
               end: daysSince(10),
               name: 'Develop Frontend',
-              id: 'task_1',
+              id: 'prj_250196_task_1',
               progress: 0,
               dependencies: 'prj_250196',
               resources: [
@@ -47,9 +62,9 @@ let tasks = [
               start: daysSince(10),
               end: daysSince(20),
               name: 'Develop API',
-              id: 'task_2',
+              id: 'prj_250196_task_2',
               progress: 0,
-              dependencies: 'task_1',
+              dependencies: 'prj_250196_task_1',
               resources: [
                 { name: 'Developer Daniel', workload: '100%' },
               ]
@@ -58,9 +73,9 @@ let tasks = [
               start: daysSince(20),
               end: daysSince(25),
               name: 'Testing',
-              id: 'task_3',
+              id: 'prj_250196_task_3',
               progress: 0,
-              dependencies: 'task_2',
+              dependencies: 'prj_250196_task_2',
               resources: [
                 { name: 'Tester Tim', workload: '100%' },
               ]
@@ -69,9 +84,9 @@ let tasks = [
               start: daysSince(25),
               end: daysSince(30),
               name: 'Demo Evaluation',
-              id: 'task_4',
+              id: 'prj_250196_task_4',
               progress: 0,
-              dependencies: 'task_3',
+              dependencies: 'prj_250196_task_3',
               resources: [
                 { name: 'Developer David', workload: '100%' },
                 { name: 'Developer Daniel', workload: '100%' },

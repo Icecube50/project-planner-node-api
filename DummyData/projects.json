@@ -6,7 +6,10 @@
     "startDate": "2025-08-01",
     "endDate": "2025-08-21",
     "hoursEstimated": 120,
-    "hoursCompleted": 45
+    "hoursCompleted": 45,
+    "view": {
+      "color": "#198209"
+    }
   },
   {
     "prjId": "PRJ002",
@@ -15,7 +18,10 @@
     "startDate": "2025-07-15",
     "endDate": "2025-09-01",
     "hoursEstimated": 300,
-    "hoursCompleted": 180
+    "hoursCompleted": 180,
+    "view": {
+      "color": "#1972e6"
+    }
   },
   {
     "prjId": "PRJ003",
@@ -24,7 +30,10 @@
     "startDate": "2025-08-10",
     "endDate": "2025-08-25",
     "hoursEstimated": 80,
-    "hoursCompleted": 20
+    "hoursCompleted": 20,
+    "view": {
+      "color": "#7a0794"
+    }
   },
   {
     "prjId": "PRJ004",
@@ -33,7 +42,10 @@
     "startDate": "2025-07-28",
     "endDate": "2025-08-15",
     "hoursEstimated": 100,
-    "hoursCompleted": 60
+    "hoursCompleted": 60,
+    "view": {
+      "color": "#db8307"
+    }
   },
   {
     "prjId": "PRJ005",
@@ -42,6 +54,9 @@
     "startDate": "2025-08-05",
     "endDate": "2025-09-10",
     "hoursEstimated": 150,
-    "hoursCompleted": 75
+    "hoursCompleted": 75,
+    "view": {
+      "color": "#07dbad"
+    }
   }
 ]

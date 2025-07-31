@@ -24,12 +24,18 @@ app.get('/api/projects/:id', getProjectById)
 app.get('/api/projects/:date', getProjectsFromDateOnwards)
 app.get('/api/projects/:id/tasks', getTasksOfProject)
 
+app.get('/api/employees', getEmployees)
+
+app.get('/api/assignments/:employeeId', getAssignmentForEmployee)
+
+app.get('/api/tasks/:id', getTaskById)
+
 // Start the server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 }); 
 
-function getProjects(req, res){
+function getProjects(req, res, next){
     try{
       const result = gateway.getProjects()
       res.json(result)
@@ -39,7 +45,7 @@ function getProjects(req, res){
     }
 }
 
-function getProjectById(req, res){
+function getProjectById(req, res, next){
     try{
       const projectId = req.params.id
       const result = gateway.getProjectById(projectId)
@@ -50,7 +56,7 @@ function getProjectById(req, res){
     }
 }
 
-function getProjectsFromDateOnwards(req, res){
+function getProjectsFromDateOnwards(req, res, next){
     try{
       const date = new Date(req.params.date)
       const result = gateway.getProjectsFromDateOnwards(date)
@@ -61,10 +67,42 @@ function getProjectsFromDateOnwards(req, res){
     }
 }
 
-function getTasksOfProject(req, res){
+function getTasksOfProject(req, res, next){
     try{
       const id = req.params.id
       const result = gateway.getTasksOfProject(id)
+      res.json(result)
+    }
+    catch(error){
+      next(error)
+    }
+}
+
+function getEmployees(req, res, next){
+  try{
+      const result = gateway.getEmployees()
+      res.json(result)
+  }
+  catch(error){
+    next(error)
+  }
+}
+
+function getAssignmentForEmployee(req, res, next){
+   try{
+      const id = req.params.employeeId
+      const result = gateway.getAssignmentForEmployee(id)
+      res.json(result)
+    }
+    catch(error){
+      next(error)
+    }
+}
+
+function getTaskById(req, res, next){
+    try{
+      const id = req.params.id
+      const result = gateway.getTaskById(id)
       res.json(result)
     }
     catch(error){

@@ -1,5 +1,7 @@
 const projects = require('../DummyData/projects.json')
 const tasks = require('../DummyData/tasks.json')
+const employees = require('../DummyData/employees.json')
+const assignments = require('../DummyData/assignments.json')
 
 class DummyGateway {
 
@@ -17,6 +19,18 @@ class DummyGateway {
 
     getTasksOfProject(id) {
         return tasks.filter(task => task.prjId === id)
+    }
+
+    getEmployees() {
+        return employees
+    }
+
+    getAssignmentForEmployee(employeeId){
+        return assignments.filter(it => it.employeeId === employeeId)
+    }
+
+    getTaskById(taskId){
+        return tasks.filter(task => task.taskId === taskId)
     }
 } 
 

@@ -1,11 +1,47 @@
 [
-    {
-        "prjId": "",
-        "name":,
-        "description":,
-        "startDate":,
-        "endDate":,
-        "hoursEstimated":,
-        "hoursCompleted":,
-    }
+  {
+    "prjId": "PRJ001",
+    "name": "Website Redesign",
+    "description": "Complete UI/UX overhaul of the main website.",
+    "startDate": "2025-08-01",
+    "endDate": "2025-08-21",
+    "hoursEstimated": 120,
+    "hoursCompleted": 45
+  },
+  {
+    "prjId": "PRJ002",
+    "name": "Mobile App MVP",
+    "description": "Build a minimum viable product of the mobile app for iOS and Android.",
+    "startDate": "2025-07-15",
+    "endDate": "2025-09-01",
+    "hoursEstimated": 300,
+    "hoursCompleted": 180
+  },
+  {
+    "prjId": "PRJ003",
+    "name": "Marketing Campaign Q3",
+    "description": "Launch digital marketing campaign for third quarter promotions.",
+    "startDate": "2025-08-10",
+    "endDate": "2025-08-25",
+    "hoursEstimated": 80,
+    "hoursCompleted": 20
+  },
+  {
+    "prjId": "PRJ004",
+    "name": "Internal Audit",
+    "description": "Conduct security and financial audit across departments.",
+    "startDate": "2025-07-28",
+    "endDate": "2025-08-15",
+    "hoursEstimated": 100,
+    "hoursCompleted": 60
+  },
+  {
+    "prjId": "PRJ005",
+    "name": "Client Onboarding Automation",
+    "description": "Automate initial onboarding process for new enterprise clients.",
+    "startDate": "2025-08-05",
+    "endDate": "2025-09-10",
+    "hoursEstimated": 150,
+    "hoursCompleted": 75
+  }
 ]

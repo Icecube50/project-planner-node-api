@@ -1,4 +1,4 @@
-import { DummyGateway } from './Gateway/DummyGateway';
+const DummyGateway = require('./Gateway/DummyGateway.js')
 
 const express = require('express');
 const cors = require('cors')
@@ -19,12 +19,10 @@ app.use((err, req, res, next) => {
   res.status(500).send('Internal server error.')
 })
 
-
 app.get('/api/projects', getProjects)
-app.get('api/projects/:id', getProjectById)
-app.get('api/projects/:date', getProjectsFromDateOnwards)
-app.get('api/projects/:id/tasks', getTasksOfProject)
-
+app.get('/api/projects/:id', getProjectById)
+app.get('/api/projects/:date', getProjectsFromDateOnwards)
+app.get('/api/projects/:id/tasks', getTasksOfProject)
 
 // Start the server
 app.listen(port, () => {

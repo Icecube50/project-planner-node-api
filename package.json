@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Icecube50/project-planner-node-api#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0"
   }
 }

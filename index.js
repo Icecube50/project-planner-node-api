@@ -1,8 +1,16 @@
 const express = require('express');
+const cors = require('cors')
 const app = express();
 const port = 8080;
 
+const corsOptions = {
+  origin: 'http://localhost:5173', // or your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // optional: restrict methods
+  //credentials: true // if you're using cookies/auth
+}
+
 app.use(express.json());
+app.use(cors(corsOptions))
 
 // Respond to GET request on the root route
 app.get('/api/tasks', (req, res) => {

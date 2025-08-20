@@ -12,6 +12,11 @@ class Gateway{
     get(table) {
         return this.db[table]
     }
+
+    set(table, value){
+        console.log(`Updating ${table}`)
+        this.db[table] = value
+    }
 }
 
 let gateway = null

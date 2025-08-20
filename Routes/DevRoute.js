@@ -9,6 +9,7 @@ devRouter.post('/dev/milestones', setMilestones)
 devRouter.post('/dev/projects', setProjects)
 devRouter.post('/dev/tasks', setTasks)
 devRouter.post('/dev/teams', setTeams)
+devRouter.post('/dev/vacations', setVacations)
 devRouter.get('/dev', getDB)
 
 function getDB(req, res, next) {
@@ -84,6 +85,16 @@ function setTasks(req, res, next){
 function setTeams(req, res, next){
   try{
     Access().set("teams", req.body.payload)
+    res.status(200)
+  }
+  catch(error){
+    next(error)
+  }
+}
+
+function setVacations(req, res, next){
+  try{
+    Access().set("vacations", req.body.payload)
     res.status(200)
   }
   catch(error){

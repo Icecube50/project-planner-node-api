@@ -10,6 +10,7 @@ export function Load(){
         milestones: [],
         tasks: [],
         assignments: [],
+        vacations: [],
     }
 
     const files = fs.readdirSync(process.env.DATABASE_URL);
@@ -48,6 +49,10 @@ export function Load(){
             case "assignments.json":
                 db.assignments = data
                 break
+
+            case "vacations.json":
+                db.vacations = data
+                break;
 
             default:
                 break;

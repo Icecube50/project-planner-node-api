@@ -14,7 +14,6 @@ class Gateway{
     }
 
     set(table, value){
-        console.log(`Updating ${table}`)
         this.db[table] = value
     }
 }

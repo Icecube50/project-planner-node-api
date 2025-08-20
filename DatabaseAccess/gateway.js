@@ -4,11 +4,7 @@ class Gateway{
     constructor() {      
         this.db = Load()
     }
-
-    get() {
-        return this.db
-    }
-
+    
     get(table) {
         return this.db[table]
     }

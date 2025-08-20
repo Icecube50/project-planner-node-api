@@ -9,6 +9,17 @@ devRouter.post('/dev/milestones', setMilestones)
 devRouter.post('/dev/projects', setProjects)
 devRouter.post('/dev/tasks', setTasks)
 devRouter.post('/dev/teams', setTeams)
+devRouter.get('/dev', getDB)
+
+function getDB(req, res, next) {
+    try{
+      const result = Access().db
+      res.json(result)
+    }
+    catch(error){
+      next(error)
+    }
+}
 
 function setUsers(req, res, next){
   try{

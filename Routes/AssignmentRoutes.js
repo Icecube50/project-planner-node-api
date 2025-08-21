@@ -39,7 +39,7 @@ function getAssignedProjects(req, res, next) {
             var milestone = Access().get("milestones").find(it => it.milestone_id === task.milestone_id)
             var project = Access().get("projects").find(it => it.project_id === milestone.project_id)
             
-            result.push({ from: assignment.startDate, to: assignment.endDate, hours: assignment.hoursPerDay, prj: project})
+            result.push({ from: assignment.startDate, to: assignment.endDate, hours: assignment.hoursPerDay, task: task.name, prj: project})
         }
         
         res.json(result)

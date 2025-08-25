@@ -7,7 +7,6 @@ export function Load(){
         employees: [],
         teams: [],
         projects: [],
-        milestones: [],
         tasks: [],
         assignments: [],
         vacations: [],

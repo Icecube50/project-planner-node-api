@@ -6,7 +6,6 @@ const assignmentRouter = Router();
 
 assignmentRouter.get("/assignments", authenticateToken, getAssignments);
 assignmentRouter.get("/assignments/:employee", authenticateToken, getEmployeeAssignments);
-assignmentRouter.get("/assignments/projects/:employee", authenticateToken, getAssignedProjects);
 
 function getAssignments(req, res, next) {
     try {
@@ -19,35 +18,31 @@ function getAssignments(req, res, next) {
 }
 
 function getEmployeeAssignments(req, res, next) {
-    try {
-        const employee = req.params.employee
-        const result = Access().get("assignments").filter(it => it.employee_id === employee)
-        res.json(result)
-    }
-    catch (error) {
-        next(error)
-    }
-}
-
-function getAssignedProjects(req, res, next) {
-    try {
-        const employee = req.params.employee
-        const result = []
-        var assignments = Access().get("assignments").filter(it => it.employee_id === employee)
-        for (let assignment of assignments) {
-            var task = Access().get("tasks").find(it => it.task_id === assignment.task_id)
-            var milestone = Access().get("milestones").find(it => it.milestone_id === task.milestone_id)
-            var project = Access().get("projects").find(it => it.project_id === milestone.project_id)
-            
-            result.push({ from: assignment.startDate, to: assignment.endDate, hours: assignment.hoursPerDay, task: task.name, prj: project})
+    try{
+        const result = {
+            tasks: [],
+            assignments: [],
+            vacations: []
         }
-        
-        res.json(result)
-    }
-    catch (error) {
-        next(error)
-    }
-}
 
+        const id = req.params.employee
+
+        const vacations = Access().get("vacations").filter(it => it.employee_id === id)
+        result.vacations = vacations
+
+        const assigns = Access().get("assignments").filter(it => it.employee_id === id)
+        for(var assign of assigns){
+            result.assignments.push(assign)
+            
+            const task = Access().get("tasks").find(it => it.task_id === assign.task_id)
+            result.tasks.push(task)
+        }
+
+        res.json(result)
+  }
+  catch(error){
+    next(error)
+  }
+}
 
 export default assignmentRouter;

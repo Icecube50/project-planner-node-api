@@ -7,7 +7,6 @@ import employeeRouter from '../Routes/EmployeeRoute.js';
 import milestoneRouter from '../Routes/MilestoneRoute.js';
 import assignmentRouter from '../Routes/AssignmentRoutes.js';
 import devRouter from '../Routes/DevRoute.js';
-import pool from '../DatabaseAccess/pgGateway.js';
 
 export function Run(){
 

@@ -22,7 +22,8 @@ function getEmployeeAssignments(req, res, next) {
         const result = {
             tasks: [],
             assignments: [],
-            vacations: []
+            vacations: [],
+            projects: [],
         }
 
         const id = req.params.employee
@@ -36,6 +37,9 @@ function getEmployeeAssignments(req, res, next) {
             
             const task = Access().get("tasks").find(it => it.task_id === assign.task_id)
             result.tasks.push(task)
+
+            const project = Access().get("projects").find(it => it.project_id === task.project_id)
+            result.projects.push(project)
         }
 
         res.json(result)

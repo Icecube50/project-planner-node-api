@@ -2,18 +2,23 @@ import { Router } from "express";
 import { Access } from "../DatabaseAccess/gateway.js";
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { authenticateToken } from "../API/auth.js";
+import pool from "../DatabaseAccess/postgresGateway.js";
 
 const accountRouter = Router();
 
 accountRouter.post("/login", Login);
 accountRouter.post("/refresh", Refresh)
+accountRouter.post("/register", Register)
 
-function Login(req, res, next){
+async function Login(req, res, next){
+  const client = await pool.connect();
   try{
-    const user = Access().get("users").find(u => u.user === req.body.user)
+    const user = req.body.user
+    const password = bcrypt.hashSync(req.body.password, Number(process.env.SALT)) 
 
-    if (!user || !bcrypt.compareSync(req.body.password, user.password)) {
+    const validCredentials = await client.query("SELECT f_validate_user($1, $2)", [user, password])
+
+    if (!validCredentials) {
       console.log('Invalid credentials')
       return res.status(401).json({ error: 'Invalid credentials' })
     }
@@ -25,11 +30,12 @@ function Login(req, res, next){
     res.json({ token: token, user: user })
   }
   catch(error){
+    console.log(error)
     next(error)
   }
 }
 
-function Refresh(req, res, next){
+async function Refresh(req, res, next){
   try{
     const refreshToken = req.cookies.refreshToken;
     if (!refreshToken) 
@@ -48,6 +54,21 @@ function Refresh(req, res, next){
     });
   }
   catch(error){
+    next(error)
+  }
+}
+
+async function Register(req, res, next){
+  const client = await pool.connect();
+  try{
+    const user = req.body.user
+    const password = bcrypt.hashSync(req.body.password, Number(process.env.SALT)) 
+    await client.query("CALL create_user($1, $2)", [user, password])
+
+    return Login(req, res, next)
+  }
+  catch(error){
+    console.log(error)
     next(error)
   }
 }
